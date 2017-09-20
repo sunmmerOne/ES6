@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ARRAY</title>
+</head>
+<body>
+    <p>第一个p标签</p>
+    <p>第二个p标签</p>
+    <p>第三个p标签</p>
+</body>
+<!--<script src="may.js"></script>-->
+<script>
+    //Array.from将对象转换成数组
+    var obj = {
+        0:"hello",
+        1:"world",
+        2:"hehe",
+        length:3
+    }
+    var arr = Array.from(obj);
+    console.log(arr);
+
+    //将节点转换成数组
+    var obj = document.querySelectorAll("p");
+//    console.log(obj);
+    var newArray = Array.from(obj);
+    console.log(newArray);
+
+    //将隐藏参数转化成数组
+    function test(){
+//        console.log(arguments);
+        var newArr = Array.from(arguments);
+        console.log(newArr);
+    }
+    test("a","b","c");
+
+    //Array.of
+//    var arr = [1,2,3,4];
+//    var arr = Array.of(1,2,3,4);
+//    console.log(arr);
+
+    //arr.fill()填充
+    var arr = [1,2,3];
+    var newArr = arr.fill(7);
+    console.log(newArr);
+
+    //find 查找符合条件的第一个元素
+    var arr= [3,5,6,4,8];
+    var res = arr.find(function(v,k,arr){
+        return v>6;
+    })
+    console.log(res);
+
+    //findIndex;查找符合条件的第一个元素所在的位置
+    var arr = [3,5,6,9,8];
+    var res = arr.findIndex(function(v,k,arr){
+        return v>6;
+    })
+    console.log(res);
+
+    //浅拷贝copyWithin三个参数：1.开始替换的位置；2.要替换的开始位置（包含，可选）；3.要替换的结束位置（不包含，可选）
+    var arr = [2,5,6,8,9];
+    var newArr = arr.copyWithin(0,2,3);
+    console.log(newArr);
+    //负数：最后一位是-1；往左边逐渐变小，-2；
+    var newArr2 = arr.copyWithin(0,-3,0);
+    console.log(newArr2);
+
+    //定义函数;{}表示对象或者代码块，用对象定义，省略function
+    var person = {
+        fun(name){console.log(name+":我是fun方法")},
+        hobby(like){console.log("我的爱好是"+like)}
+    }
+    person.fun("张三");
+    person.hobby("篮球");
+
+    class Person{
+        //es6里面属性也是通过方法来定义的,不支持this定义
+        name(){
+            return "张三";
+        }
+        fun(){
+            console.log("我是fun放大大");
+        }
+    }
+    var newP = new Person();
+    console.log(newP.name());
+    newP.fun();
+    class Son extends Person{
+
+    }
+    var newSon = new Son();
+    newSon.fun();
+
+    //代码块 let的作用域实在代码块之内,并且比较严谨.
+    {
+        let a = "我是let变量";
+        var b = "我是var声明的变量";
+        console.log(a);
+    }
+
+    //常量，只能定义一次。
+    const NAME = "zhangsan";
+    console.log(NAME);
+
+    //箭头语法
+    f=v=>v;
+//    function f(v){
+//        return v;
+//    }
+
+    //通过...str接收所有传入的参数
+//    f=(...str)=>{
+//        console.log(str);
+//    }
+//    f("a","bv");
+
+    f=()=>({
+        a:"hello",
+        b:"world"
+    })
+    var obj = f();
+    console.log(obj.a);
+
+    f=(a=3)=>a;
+    var res = f();
+    console.log(res);
+//    var res = f("我是是否噶啊啊");
+//    console.log(res);
+    var hello = "你好";
+    var world = "师姐";
+    var str = `dasdawe${hello}qqewqw
+eqweq${world}we`;
+    console.log(str);
+    var [a,b,c,d] = ['hello','🐩','🐂','🐈'];
+    console.log(a);
+    console.log(b);
+    console.log(c);
+    console.log(d);
+
+    //函数的默认参数 下面就是b是1，传参2 就是a
+    function test(a,b=1){
+       console.log(a,b);
+    }
+    test(2);
+</script>
+</html>
+
+
+
+
+
+
+
+
